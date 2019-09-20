@@ -147,15 +147,13 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64:/usr/loc
 RUN apt-get update && apt-get install -y git-lfs 
 WORKDIR /
 RUN git clone https://github.com/mozilla/DeepSpeech.git
-RUN git checkout 'transfer-learning2'
-
 WORKDIR /DeepSpeech
+RUN git checkout 'transfer-learning2'
 
 RUN pip3 --no-cache-dir install -r requirements.txt
 
 # Link DeepSpeech native_client libs to tf folder
 RUN ln -s /DeepSpeech/native_client /tensorflow
-
 
 
 
